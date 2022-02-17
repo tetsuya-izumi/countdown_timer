@@ -1,18 +1,19 @@
 'use strict';
-function countdown(due) {
-    // 定数nowに現在時刻を代入
-    const now = new Date();
-    // 定数restに未来時刻-現在時刻の計算結果を代入
-    const rest = due.getTime() - now.getTime();
-    // 定数secに残り時間rest（ミリ秒）を秒単位にして代入
-    const sec = Math.floor(rest/1000);
-    return sec;
+
+function countdown(due){
+  const now = new Date();
+
+  const rest = due.getTime() - now.getTime();
+  const sec = Math.floor(rest/1000) % 60;
+  const min = Math.floor(rest/1000/60) % 60;
+  const hours = Math.floor(rest/1000/60/60) % 24;
+  const count = [hours, min, sec];
+
+  return count;
+
 }
 
 let goal = new Date();
-
-console.log(goal);
-
 goal.setHours(23);
 goal.setMinutes(59);
 goal.setSeconds(59);
