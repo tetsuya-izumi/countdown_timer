@@ -13,6 +13,9 @@ function countdown(due){
 
 }
 
+// 関数=機能 引数=材料 戻り値=できたもの
+// 例えば大根おろし機の婆愛 機能=すリおろし 引数=大根 戻り値=大根おろし
+
 let goal = new Date();
 goal.setHours(23);
 goal.setMinutes(59);
