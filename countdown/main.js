@@ -4,10 +4,11 @@ function countdown(due){
   const now = new Date();
 
   const rest = due.getTime() - now.getTime();
+  const dec_sec = Math.floor(rest/100) % 60;
   const sec = Math.floor(rest/1000) % 60;
   const min = Math.floor(rest/1000/60) % 60;
   const hours = Math.floor(rest/1000/60/60) % 24;
-  const count = [hours, min, sec];
+  const count = [hours, min, sec, dec_sec];
 
   return count;
 
@@ -22,14 +23,14 @@ goal.setMinutes(59);
 goal.setSeconds(59);
 console.log(countdown(goal));
 const counter = countdown(goal);
-const time = `${counter[0]}時間${counter[1]}分${counter[2]}`;
+const time = `${counter[0]}時間${counter[1]}分${counter[2]}${counter[3]}`;
 console.log(time);
 document.getElementById('timer').textContent = time;
 
 function recalc() {
     console.log(countdown(goal));
     const counter = countdown(goal);
-    const time = `${counter[0]}時間${counter[1]}分${counter[2]}秒`
+    const time = `${counter[0]}時間${counter[1]}分${counter[2]}秒${counter[3]}`
     console.log(time);
     document.getElementById('timer').textContent = time;
     // ※次の一行を忘れずに追加！！
@@ -38,7 +39,7 @@ function recalc() {
   
   // ここから
   function refresh() {
-    setTimeout(recalc, 1000);
+    setTimeout(recalc, 100);
   }
   
   recalc();
